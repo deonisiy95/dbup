@@ -21,8 +21,11 @@ define('CONFIG_WEB_CHARSET'		, 'UTF-8');
 require_once PATH_API 	. "system/functions.php";
 require_once PATH_API 	. "system/exception.php";
 require_once PATH_API 	. "system/define.php";
-require_once PATH_API 	. "system/mcache.php";
 require_once PATH_API 	. "system/db.php";
+require_once PATH_API 	. "models/user.php";
+require_once PATH_API 	. "models/user/main.php";
+require_once PATH_API 	. "models/user/auth.php";
+require_once PATH_API 	. "models/session.php";
 
 // private data
 require_once PATH_API	. "private/main.php";
@@ -32,8 +35,7 @@ require_once PATH_API	. "private/custom.php";
 require_once PATH_API	. "controllers/default.php";
 require_once PATH_API	. "controllers/handler.php";
 require_once PATH_API	. "controllers/auth.php";
-
-
+require_once PATH_API	. "controllers/global.php";
 
 
 if (!headers_Sent()) {

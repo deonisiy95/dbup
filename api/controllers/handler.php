@@ -25,12 +25,15 @@ class ApiV1_Handler {
 	//	@user_id	для отладки и тестов. действуйет только в режиме cli
 	public static function doStart($api_method, $post_data, $user_id = 0) {
 
-		//$user = User::init($user_id);
+        // подключаемся к БД
+        db::connect();
 
-        echo $api_method;
+        //
+		$user = User::init($user_id);
 
+		debug($user->session->session_id);
 		// получаем ответ
-		$output = self::_getResponse($api_method, $post_data);
+		$output = self::_getResponse($api_method, $post_data, $user);
 
 		// отдаем финальный ответ
 		return $output;
@@ -42,7 +45,7 @@ class ApiV1_Handler {
 	// ---------------------------------------------------
 
 	// роутим юзера в нужную функцию
-	protected static function _getResponse($api_method, $post_data) {
+	protected static function _getResponse($api_method, $post_data, $user) {
 
 		$method = explode('/', strtolower($api_method));
 
@@ -59,7 +62,7 @@ class ApiV1_Handler {
 
 		// возвращаем работу метод
 		$class = "ApiV1_{$method[0]}";
-		return (new $class())->work($method[1], $post_data);
+		return (new $class())->work($method[1], $post_data, $user);
 	}
 
 }

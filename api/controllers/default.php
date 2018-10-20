@@ -3,19 +3,20 @@
 // класс который наследует любой Api класс
 abstract class ApiV1_Default {
 
+    /** @var User */
 	protected $user          = null;
 	protected $method        = null;
 	protected $post_data     = [];
 	protected $allow_methods = [];      // разрешенные методы
 
 	//
-	public function work($action, $post_data) {
+	public function work($action, $post_data, User $user) {
 
 		unset($this->user);
 
 		//
 		$this->post_data = $post_data;
-		//$this->user      = $user;
+		$this->user      = $user;
 		//
 		foreach ($this->allow_methods as $value) {
 			if (strtolower($action) == strtolower($value)) {
@@ -23,7 +24,7 @@ abstract class ApiV1_Default {
 			}
 		}
 
-		return ['error' => 123];
+		return ['error' => 1234];
 	}
 
 	//

@@ -6,7 +6,7 @@
 class db {
 
     // дескриптор описывающий подключение с базой данных
-    protected static $connection = false;
+    public static $connection = false;
 
     // устанавливаем соединение с базой данных
     public static function connect() {
@@ -31,10 +31,18 @@ class db {
     // функция выполняющая запрос
     public static function query($query) {
 
-        // отправляем запрос
-        $result = self::$connection->query($query);
+        if ( self::$connection != false) {
 
-        console(mysqli_fetch_assoc($result));
+            // отправляем запрос
+            $result = self::$connection->query($query);
+
+            if ( isset($result->num_rows) && $result->num_rows > 0) {
+                return mysqli_fetch_assoc($result);
+            }
+
+            return [];
+        }
+
 
     }
 }
