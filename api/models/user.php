@@ -11,6 +11,8 @@ class User {
 
 	public $user_id = 0;
 	public $role;
+	public $full_name;
+	public $organisation_id;
 
 	function __construct($user_id = 0) {
 
@@ -24,6 +26,8 @@ class User {
 			if (isset($row['role'])) {
 
 				$this->role = $row['role'];
+				$this->full_name = $row['full_name'];
+				$this->organisation_id = $row['organisation_id'];
 			}
 
 			return $this;

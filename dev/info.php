@@ -13,6 +13,8 @@ db::connect();
 //$r->start();
 
 //$result = Type_User_Main::create('dens', '122', '312');
-$row = Type_User_Main::getByUserName('den');
+//$row = Type_User_Main::getUserOrganisation(5);
 
-console($row);
+//console($row);
+
+console(sprintf('SELECT * FROM `user` as user, `organisation` as organisation  WHERE `user_id` = %g and organisation.organisation_id = user.organisation_id', 5));

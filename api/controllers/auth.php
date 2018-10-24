@@ -88,8 +88,6 @@ class ApiV1_Auth extends ApiV1_Default {
         setcookie($this->user->session->session_id, -1);
 
         return $this->ok();
-
-
     }
 
     // ключ по которому сохранчем в кеш
