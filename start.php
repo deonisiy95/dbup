@@ -26,6 +26,7 @@ require_once PATH_API 	. "models/user.php";
 require_once PATH_API 	. "models/user/main.php";
 require_once PATH_API 	. "models/user/auth.php";
 require_once PATH_API 	. "models/session.php";
+require_once PATH_API 	. "models/assessment.php";
 
 // private data
 require_once PATH_API	. "private/main.php";
@@ -36,6 +37,8 @@ require_once PATH_API	. "controllers/default.php";
 require_once PATH_API	. "controllers/handler.php";
 require_once PATH_API	. "controllers/auth.php";
 require_once PATH_API	. "controllers/global.php";
+require_once PATH_API	. "controllers/profile.php";
+require_once PATH_API	. "controllers/assessment.php";
 
 
 if (!headers_Sent()) {

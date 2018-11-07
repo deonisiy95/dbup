@@ -36,8 +36,24 @@ class db {
             // отправляем запрос
             $result = self::$connection->query($query);
 
+            console($result->num_rows);
+
+            $result_array = [];
+
             if ( isset($result->num_rows) && $result->num_rows > 0) {
-                return mysqli_fetch_assoc($result);
+
+                if ($result->num_rows >= 2) {
+
+                    while ($row = $result->fetch_assoc()) {
+
+                        $result_array[] = $row;
+                    }
+
+                    return $result_array;
+                } else {
+
+                    return mysqli_fetch_assoc($result);
+                }
             }
 
             return [];

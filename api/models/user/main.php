@@ -16,8 +16,8 @@ class Type_User_Main {
         return $row;
     }
 
-    // получаем из базы информацию об оршанизации по id
-    public static function getUserOrganisation($user_id) {
+    // получаем из базы полную информацию
+    public static function getFullInfo($user_id) {
 
         $row = db::query(sprintf('SELECT * FROM `user` as user, `organisation` as organisation  WHERE `user_id` = %g and organisation.organisation_id = user.organisation_id', $user_id));
         return $row;

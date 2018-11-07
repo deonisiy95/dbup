@@ -7,10 +7,8 @@ class ApiV1_Handler {
 		'global',
 		'auth',
 		'logs',
-		'admin',
-		'messages',
-		'chats',
-		'updates',
+		'profile',
+		'assessment',
 	];
 
 	protected static $allowed_not_authorized = [
@@ -31,7 +29,6 @@ class ApiV1_Handler {
         //
 		$user = User::init($user_id);
 
-		debug($user->session->session_id);
 		// получаем ответ
 		$output = self::_getResponse($api_method, $post_data, $user);
 

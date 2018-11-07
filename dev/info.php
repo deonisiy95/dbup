@@ -17,4 +17,5 @@ db::connect();
 
 //console($row);
 
-console(sprintf('SELECT * FROM `user` as user, `organisation` as organisation  WHERE `user_id` = %g and organisation.organisation_id = user.organisation_id', 5));
+console(Type_Assessment_Main::getAll(5));
+console(ApiV1_Handler::doStart('auth/tryLogin', ['username'=> '2', 'password'=>'32']));
