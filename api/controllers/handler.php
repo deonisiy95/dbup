@@ -46,13 +46,24 @@ class ApiV1_Handler {
 
 		$method = explode('/', strtolower($api_method));
 
-		// если метода нет в разрешенных группах методов
+        // если метода нет в доступных группах методов
         if (!in_array($method[0], self::$allow_controllers)) {
 
             return [
                 "status" => "error",
                 "response" => [
-                    "message" => 1
+                    "message" => 2
+                ]
+            ];
+        }
+
+        // если пользователь не авторизован и метода нет в разрешенных группах методов для неавторизованных
+        if ($user->user_id < 1 && !in_array($method[0], self::$allowed_not_authorized)) {
+
+            return [
+                "status" => "error",
+                "response" => [
+                    "message" => 2
                 ]
             ];
         }

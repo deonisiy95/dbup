@@ -10,11 +10,28 @@ class Type_Assessment_Main {
     }
 
     // сохранить в базе информацию об оценке
-    public static function set() {
+    public static function set($assessment_id, $audit_object, $address, $auditor_id, $assessment_link) {
 
-        $query_str = sprintf("INSERT INTO `assessment` (audit_object, address, auditor_id, assessment_link, created_at) VALUES ('%s', '%s', %g, %g)"
-
+        // занесем информацию об оценке в базу
+        $query_str = sprintf("INSERT INTO `assessment` (assessment_id, audit_object, address, auditor_id, assessment_link, created_at) VALUES (%g, '%s', '%s', %g, '%s', %g)",
+            $assessment_id,
+            $audit_object,
+            $address,
+            $auditor_id,
+            $assessment_link,
+            time()
         );
+
+        db::query($query_str);
+
+        // запишем ее к создателю
+        $query_str = sprintf("INSERT INTO `user_assessment` (user_id, assessment_id) VALUES (%g, %g)",
+            $auditor_id,
+            $assessment_id
+        );
+
+        db::query($query_str);
+
 
     }
 

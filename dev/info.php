@@ -17,5 +17,13 @@ db::connect();
 
 //console($row);
 
-console(Type_Assessment_Main::getAll(5));
-console(ApiV1_Handler::doStart('auth/tryLogin', ['username'=> '2', 'password'=>'32']));
+//console(Type_Assessment_Main::getAll(5));
+//console(ApiV1_Handler::doStart('auth/tryLogin', ['username'=> '2', 'password'=>'32']));
+
+$query_str = sprintf("INSERT INTO `assessment` (audit_object, address, auditor_id, assessment_link, created_at) VALUES ('%s', '%s', %g, '%s', %g)",
+    '2234',
+    '12',
+    12,
+    '213',
+    time()
+);
