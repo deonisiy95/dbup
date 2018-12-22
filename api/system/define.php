@@ -18,3 +18,8 @@ define('DAY10'					, 3600*24*10);
 define('DAY14'					, 3600*24*14);
 define('DAY15'					, 3600*24*15);
 
+const TYPE_ROLE_ADMIN = 0;
+const TYPE_ROLE_AUDITOR = 1;
+const TYPE_ROLE_USER = 2;
+const TYPE_ROLE_DOC = 3;
+

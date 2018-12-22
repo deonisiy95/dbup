@@ -5,7 +5,8 @@ Class ApiV1_Assessment extends ApiV1_Default {
     // Поддерживаемые методы. Регистр не имеет значение */
     protected $allow_methods = [
         'getAll',
-        'tryUpload'
+        'tryUpload',
+        'setDocument'
     ];
 
     // получение информации о профиле
@@ -15,6 +16,19 @@ Class ApiV1_Assessment extends ApiV1_Default {
         $row = Type_Assessment_Main::getAll($this->user->user_id);
 
         return $this->ok($row);
+    }
+
+    protected function setDocument() {
+
+        // получим информацию о документах
+        $document_info = $this->post('?s','document_poll');
+
+        // получим идентификатор оценки
+        $assessment_id = $this->post('?i', 'assessment_id');
+
+        // сохраняем в базе
+        Type_Assessment_Main::setDocument($document_info, $assessment_id);
+
     }
 
     protected function tryUpload() {
